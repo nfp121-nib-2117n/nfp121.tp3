@@ -15,8 +15,10 @@ public class Pile implements PileI {
     private int ptr;
 
     public Pile(int taille) {
-        // traiter le cas <=0
-        // a completer
+        if (taille <= 0)
+            taille = CAPACITE_PAR_DEFAUT;
+        this.zone = new Object[taille];
+        this.ptr = 0;
     }
 
     public Pile() {
@@ -24,41 +26,60 @@ public class Pile implements PileI {
     }
 
     public void empiler(Object o) throws PilePleineException {
-        // a completer
+        if (estPleine())
+            throw new PilePleineException();
+        this.zone[this.ptr] = o;
+        this.ptr++;
     }
 
     public Object depiler() throws PileVideException {
-        // a completer
-        return null;
+        if (estVide())
+            throw new PileVideException();
+        this.ptr--;
+        return zone[ptr];
     }
 
     public Object sommet() throws PileVideException {
-        // a completer
-        return null;
+        if(estVide())
+            throw new PileVideException();
+        return this.zone[this.ptr - 1];
     }
 
     public int capacite() {
-        // a completer
-        return -1;
+        return this.zone.length;
     }
 
     public int taille() {
-        // a completer
-        return -1;
+        return this.ptr;
     }
 
     public boolean estVide() {
-        // a completer
-        return false;
+        return ptr == 0;
     }
 
     public boolean estPleine() {
-        // a completer
-        return false;
+        return ptr == zone.length;
     }
 
     public boolean equals(Object o) {
-        // a completer
+        if(o instanceof Pile){
+            // new object casted to type Pile
+            Pile o_2 = (Pile) o;
+            
+            // variable used to check if the two Pile's have the same objects
+            boolean sameObjs = true;
+            
+            // If the two Pile's have equal length
+            if(o_2.taille() == this.taille()){
+                for(int i = 0; i < o_2.taille(); i++){
+                    if(o_2.zone[i] != this.zone[i]){
+                        sameObjs = false;
+                    }
+                }
+                return sameObjs && o_2.capacite() == this.capacite();
+            }
+            return false;
+        }
         return false;
     }
 
@@ -68,7 +89,13 @@ public class Pile implements PileI {
     }
 
     public String toString() {
-        // a completer
-        return null;
+        StringBuffer sb = new StringBuffer("[");
+        for (int i = ptr - 1; i >= 0; i--) {
+            sb.append(zone[i].toString());
+            if (i > 0)
+                sb.append(", ");
+        }
+        sb.append("]");
+        return sb.toString();
     }
 }

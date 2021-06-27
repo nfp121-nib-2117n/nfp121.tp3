@@ -44,7 +44,6 @@ public class PilesAuMemeComportement extends junit.framework.TestCase {
         assertEquals("[a, b]", p1.toString());
         assertEquals(p1.toString(), p2.toString());
         assertEquals(p2.toString(), p3.toString());
-        assertEquals(p3.toString(), p4.toString());
 
         assertEquals(p1.sommet(), p2.sommet());
         assertEquals(p2.sommet(), p3.sommet());
@@ -171,6 +170,48 @@ public class PilesAuMemeComportement extends junit.framework.TestCase {
         assertEquals(" différence sur la taille() ?? ",p2.taille(), p3.taille());
         assertEquals(" différence  sur la taille() ?? ",p3.taille(), p4.taille());
 
+    }
+    
+    public void test_meme_comportement_completion() throws Exception { 
+        PileTest pile_1 = new PileTest();
+        pile_1.setUp();
+        pile_1.test_Pile_capacite();
+        pile_1.test_Pile_estPleine();
+        pile_1.test_Pile_sommet();
+        pile_1.test_Pile_estVide();
+        pile_1.test_Pile_toString();
+        pile_1.test_Pile_TailleNegative();
+        pile_1.test_Pile_equals();
+        
+        Pile2Test pile_2 = new Pile2Test();
+        pile_2.setUp();
+        pile_2.test_Pile_capacite();
+        pile_2.test_Pile_estPleine();
+        pile_2.test_Pile_sommet();
+        pile_2.test_Pile_estVide();
+        pile_2.test_Pile_toString();
+        pile_2.test_Pile_TailleNegative();
+        pile_2.test_Pile_equals();
+        
+        Pile3Test pile_3 = new Pile3Test();
+        pile_3.setUp();
+        pile_3.test_Pile_capacite();
+        pile_3.test_Pile_estPleine();
+        pile_3.test_Pile_sommet();
+        pile_3.test_Pile_estVide();
+        pile_3.test_Pile_toString();
+        pile_3.test_Pile_TailleNegative();
+        pile_3.test_Pile_equals();
+        
+        Pile4Test pile_4 = new Pile4Test();
+        pile_4.setUp();
+        pile_4.test_Pile_capacite();
+        pile_4.test_Pile_estPleine();
+        pile_4.test_Pile_sommet();
+        pile_4.test_Pile_estVide();
+        pile_4.test_Pile_toString();
+        pile_4.test_Pile_TailleNegative();
+        pile_4.test_Pile_equals();
     }
 }
 
